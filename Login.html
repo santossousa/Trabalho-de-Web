@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Login</title>
+    <link rel="stylesheet" href="ass/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="ass/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="ass/css/Login-Form-Clean.css">
+    <link rel="stylesheet" href="ass/css/styles.css">
+
+
+</head>
+
+<body>
+    <div id="header">
+        <div id="leftheader">
+            <h1>
+                <a href="index.html" class="logo">Graphs Geek</a>
+            </h1>
+        </div>
+    </div>
+    
+    <br><br><br><br><br>
+    <div class="teste">
+
+        <div class="login-clean">
+            <div class="container">
+
+                <form name="f1"action="">
+
+                    <div class="illustration">
+                        <p></p><i class="icon ion-android-person"></i>
+                    </div>
+
+                    <label for="usrname">Email:</label>
+                    <input type="text" id="usrname" name="email" placeholder="Digite seu email..."  onblur="validacaoEmail(f1.email)" name="usrname" required>
+<td>
+<div id="msgemail"></div>
+</td>
+                    <label for="psw">Senha:</label>
+                    <input type="password" id="psw" placeholder="Digite sua senha..." name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                        required>
+                    <!--<button class="botao" type="button">Entrar</button><a href="#" class="forgot">Esqueceu a senha?</a></form>-->
+                    <!----><input class="botao" formaction="timeline.html" type="submit" value="Enviar">
+                </form>
+
+
+                <div id="message">
+                    <h3>A sua senha deve ser do tipo:</h3>
+                    <p id="letter" class="invalid">Uma <b>letra minuscula</b></p>
+                    <p id="capital" class="invalid">Uma <b>letra maiscula</b></p>
+                    <p id="number" class="invalid">Um <b>número.</b></p>
+                    <p id="length" class="invalid">Pelo menos <b>8 caracteres.</b></p>
+                </div>
+            </div>
+        </div>
+
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    </div>
+
+
+    <h3>Password Validation</h3>
+    <p>Try to submit the form.</p>
+	<script language="Javascript">
+function validacaoEmail(field) {
+usuario = field.value.substring(0, field.value.indexOf("@"));
+dominio = field.value.substring(field.value.indexOf("@")+ 1, field.value.length);
+if ((usuario.length >=1) &&
+    (dominio.length >=3) && 
+    (usuario.search("@")==-1) && 
+    (dominio.search("@")==-1) &&
+    (usuario.search(" ")==-1) && 
+    (dominio.search(" ")==-1) &&
+    (dominio.search(".")!=-1) &&      
+    (dominio.indexOf(".") >=1)&& 
+    (dominio.lastIndexOf(".") < dominio.length - 1)) {
+document.getElementById("msgemail").innerHTML="E-mail válido";
+alert("email valido");
+}
+else{
+document.getElementById("msgemail").innerHTML="<font color='red'>Email inválido </font>";
+alert("E-mail invalido");
+}
+}
+</script>
+
+
+    <script>
+        var myInput = document.getElementById("psw");
+        var letter = document.getElementById("letter");
+        var capital = document.getElementById("capital");
+        var number = document.getElementById("number");
+        var length = document.getElementById("length");
+
+        // When the user clicks on the password field, show the message box
+        myInput.onfocus = function () {
+            document.getElementById("message").style.display = "block";
+        }
+
+        // When the user clicks outside of the password field, hide the message box
+        myInput.onblur = function () {
+            document.getElementById("message").style.display = "none";
+        }
+
+        // When the user starts to type something inside the password field
+        myInput.onkeyup = function () {
+            // Validate lowercase letters
+            var lowerCaseLetters = /[a-z]/g;
+            if (myInput.value.match(lowerCaseLetters)) {
+                letter.classList.remove("invalid");
+                letter.classList.add("valid");
+            } else {
+                letter.classList.remove("valid");
+                letter.classList.add("invalid");
+            }
+
+            // Validate capital letters
+            var upperCaseLetters = /[A-Z]/g;
+            if (myInput.value.match(upperCaseLetters)) {
+                capital.classList.remove("invalid");
+                capital.classList.add("valid");
+            } else {
+                capital.classList.remove("valid");
+                capital.classList.add("invalid");
+            }
+
+            // Validate numbers
+            var numbers = /[0-9]/g;
+            if (myInput.value.match(numbers)) {
+          
